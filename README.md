@@ -1,14 +1,16 @@
-# VIETAI LIFE — NỀN TẢNG AI AGENT ĐỜI SỐNG CHO 100 TRIỆU NGƯỜI VIỆT
-> **Tagline:** *"AI thấu hiểu người Việt — Đồng hành cùng nhịp sống mỗi ngày"*  
-> **Tác giả sáng lập & Sở hữu bản quyền:** **[Tuyên Phạm](https://github.com/phamvantuyenuit2006-oss)** ([@phamvantuyenuit2006-oss](https://github.com/phamvantuyenuit2006-oss))  
-> **Trợ lý:** Bé Mai (VietAI Companion) &bull; **Engine:** DeepSeek-V3 Live AI & Chuẩn đào tạo AI VIET NAM (AIO 2026)
+# VIETAI LIFE — HỆ THỐNG THUYẾT MINH TỰ ĐỘNG ĐA NGÔN NGỮ
+## ĐỒ ÁN CÔNG NGHỆ PHẦN MỀM (SOFTWARE ENGINEERING)
+> **Giảng viên hướng dẫn:** **ThS. Nguyễn Quốc Huy**  
+> **Tác giả sáng lập & Sở hữu bản quyền:** **[Tuyên Phạm](https://github.com/phamvantuyenuit2006-oss)** ([@phamvantuyenuit2006-oss](https://github.com/phamvantuyenuit2006-oss)) &bull; Email: `phamvantuyenuit2006@gmail.com`  
+> **Đề tài chính thức:** **Thuyết minh tự động đa ngôn ngữ (Automated Multilingual Narration System)**  
+> **Báo cáo đồ án chi tiết:** 📄 [Xem Báo Cáo Đồ Án Hoàn Chỉnh](docs/BAO_CAO_DO_AN_CNPM_THUYET_MINH_DA_NGON_NGU.md)
 
-[![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-blue.svg)](docs/architecture/ARCHITECTURE.md)
+[![Course](https://img.shields.io/badge/Course-C%C3%B4ng%20Ngh%E1%BB%87%20Ph%E1%BA%A7n%20M%E1%BB%81m-blue.svg)](docs/BAO_CAO_DO_AN_CNPM_THUYET_MINH_DA_NGON_NGU.md)
+[![Instructor](https://img.shields.io/badge/Instructor-ThS.%20Nguy%E1%BB%85n%20Qu%E1%BB%91c%20Huy-red.svg)](docs/BAO_CAO_DO_AN_CNPM_THUYET_MINH_DA_NGON_NGU.md)
 [![Author](https://img.shields.io/badge/Author-Tuy%C3%AAn%20Ph%E1%BA%A1m-blue?logo=github)](https://github.com/phamvantuyenuit2006-oss)
-[![Frontend](https://img.shields.io/badge/Frontend-Next.js%2015%20%2F%20React%2019-black.svg)](apps/web/)
-[![Backend](https://img.shields.io/badge/Backend-.NET%2010%20ASP.NET%20Core-purple.svg)](services/api/)
-[![AI Engine](https://img.shields.io/badge/AI%20Engine-DeepSeek--V3%20%2F%20Gemini-emerald.svg)](apps/web/src/app/api/chat/route.ts)
-[![Curriculum](https://img.shields.io/badge/Academy-AI%20VIET%20NAM%20AIO%202026-orange.svg)](https://aivietnam.edu.vn)
+[![Frontend](https://img.shields.io/badge/Frontend-Next.js%2015%20%2F%20React%20Native-black.svg)](apps/web/)
+[![Backend](https://img.shields.io/badge/Backend-.NET%2010%203--Tier%20%26%20Microservices-purple.svg)](services/api/)
+[![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions%20Automated-brightgreen.svg)](.github/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---

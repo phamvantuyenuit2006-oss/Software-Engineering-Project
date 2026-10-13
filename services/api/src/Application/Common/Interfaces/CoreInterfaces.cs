@@ -101,3 +101,55 @@ public interface IStorageService
     Task<Stream> DownloadFileAsync(string storagePath, CancellationToken ct = default);
     Task DeleteFileAsync(string storagePath, CancellationToken ct = default);
 }
+
+// ============================================================================
+// MICROSERVICES INTERFACES FOR MULTILINGUAL NARRATION (ĐỀ TÀI CNPM)
+// ============================================================================
+
+public record NarrationSegmentDto(
+    int Id,
+    string TimeStart,
+    string TimeEnd,
+    string TextTarget,
+    string TextVi
+);
+
+public record NarrationScriptResult(
+    string Title,
+    string Topic,
+    string TargetLanguage,
+    string Overview,
+    IReadOnlyList<NarrationSegmentDto> Segments,
+    string CulturalTips,
+    string AudioUrl,
+    string SubtitleUrl
+);
+
+public interface ITranslationService
+{
+    Task<string> TranslateAsync(string text, string fromLanguage, string toLanguage, CancellationToken ct = default);
+}
+
+public interface ITextToSpeechService
+{
+    Task<Stream> SynthesizeNarrationAudioAsync(string text, string targetLanguage, double speed = 1.0, CancellationToken ct = default);
+}
+
+public interface IMediaStorageService
+{
+    Task<string> SaveAudioNarrationAsync(string topic, string targetLanguage, Stream audioStream, CancellationToken ct = default);
+    Task<string> SaveSubtitleFileAsync(string topic, string srtContent, CancellationToken ct = default);
+}
+
+public interface INarrationService
+{
+    Task<NarrationScriptResult> GenerateNarrationAsync(
+        string topic,
+        string targetLanguage,
+        string style,
+        string duration,
+        string? customText = null,
+        CancellationToken ct = default
+    );
+}
+

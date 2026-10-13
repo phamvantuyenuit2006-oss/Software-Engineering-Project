@@ -218,3 +218,59 @@ public class AdminController : BaseApiController
         return Ok(stats);
     }
 }
+
+public record GenerateNarrationApiRequest(
+    string Topic,
+    string TargetLanguage,
+    string Style = "inspirational",
+    string Duration = "medium",
+    string? CustomText = null
+);
+
+[ApiController]
+[Route("api/v1/narration")]
+public class NarrationController : BaseApiController
+{
+    private readonly INarrationService _narrationService;
+
+    public NarrationController(INarrationService narrationService)
+    {
+        _narrationService = narrationService;
+    }
+
+    [HttpPost("generate")]
+    public async Task<IActionResult> Generate([FromBody] GenerateNarrationApiRequest request, CancellationToken ct)
+    {
+        if (string.IsNullOrWhiteSpace(request.Topic))
+        {
+            return BadRequest(new { error = "Vui lòng chỉ định chủ đề hoặc địa danh cần thuyết minh." });
+        }
+
+        var result = await _narrationService.GenerateNarrationAsync(
+            request.Topic,
+            request.TargetLanguage ?? "en",
+            request.Style ?? "inspirational",
+            request.Duration ?? "medium",
+            request.CustomText,
+            ct
+        );
+
+        return Ok(result);
+    }
+
+    [HttpGet("destinations")]
+    public IActionResult GetDestinations()
+    {
+        var destinations = new[]
+        {
+            new { Id = "van-mieu", Name = "Văn Miếu - Quốc Tử Giám", Location = "Hà Nội", Category = "Di tích lịch sử & Văn hóa" },
+            new { Id = "ha-long", Name = "Vịnh Hạ Long", Location = "Quảng Ninh", Category = "Di sản thiên nhiên thế giới UNESCO" },
+            new { Id = "hoi-an", Name = "Phố Cổ Hội An", Location = "Quảng Nam", Category = "Di sản văn hóa thế giới UNESCO" },
+            new { Id = "dinh-doc-lap", Name = "Dinh Độc Lập", Location = "TP. Hồ Chí Minh", Category = "Di tích lịch sử quốc gia đặc biệt" },
+            new { Id = "co-do-hue", Name = "Quần thể Di tích Cố Đô Huế", Location = "Thừa Thiên Huế", Category = "Di sản văn hóa thế giới UNESCO" },
+            new { Id = "chua-mot-cot", Name = "Chùa Một Cột (Diên Hựu Tự)", Location = "Hà Nội", Category = "Kiến trúc Phật giáo độc đáo" }
+        };
+        return Ok(destinations);
+    }
+}
+

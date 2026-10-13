@@ -51,6 +51,12 @@ public static class DependencyInjection
         services.AddScoped<IAgentOrchestrator, AgentOrchestrator>();
         services.AddSingleton<ITrustLayerValidator, TrustLayerValidator>();
 
+        // Multilingual Narration Microservices (Đồ án CNPM)
+        services.AddSingleton<ITranslationService, TranslationService>();
+        services.AddSingleton<ITextToSpeechService, TextToSpeechService>();
+        services.AddSingleton<IMediaStorageService, MediaStorageService>();
+        services.AddScoped<INarrationService, NarrationService>();
+
         return services;
     }
 }

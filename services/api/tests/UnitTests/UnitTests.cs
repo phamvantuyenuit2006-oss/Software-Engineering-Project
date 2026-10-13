@@ -107,3 +107,63 @@ public class TokenServiceTests
         token1.Should().NotBe(token2);
     }
 }
+
+public class NarrationServiceIntegrationTests
+{
+    [Fact]
+    public async Task GenerateNarrationAsync_ShouldCoordinateAcrossMicroservices_AndProduceValidScriptAndMedia()
+    {
+        // Arrange (Setup mock microservices)
+        var translationMock = new Mock<ITranslationService>();
+        translationMock
+            .Setup(t => t.TranslateAsync(It.IsAny<string>(), It.IsAny<string>(), "en", It.IsAny<CancellationToken>()))
+            .ReturnsAsync((string txt, string from, string to, CancellationToken ct) => $"[EN] {txt}");
+
+        var ttsMock = new Mock<ITextToSpeechService>();
+        ttsMock
+            .Setup(s => s.SynthesizeNarrationAudioAsync(It.IsAny<string>(), "en", 1.0, It.IsAny<CancellationToken>()))
+            .ReturnsAsync(new MemoryStream(System.Text.Encoding.UTF8.GetBytes("MOCK_AUDIO")));
+
+        var storageMock = new Mock<IMediaStorageService>();
+        storageMock
+            .Setup(m => m.SaveAudioNarrationAsync(It.IsAny<string>(), "en", It.IsAny<Stream>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync("/media/audio/van-mieu-en.mp3");
+
+        storageMock
+            .Setup(m => m.SaveSubtitleFileAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .ReturnsAsync("/media/subtitles/van-mieu.srt");
+
+        var aiProviderMock = new Mock<IAIProvider>();
+
+        var narrationService = new NarrationService(
+            translationMock.Object,
+            ttsMock.Object,
+            storageMock.Object,
+            aiProviderMock.Object
+        );
+
+        // Act
+        var result = await narrationService.GenerateNarrationAsync(
+            topic: "Văn Miếu - Quốc Tử Giám",
+            targetLanguage: "en",
+            style: "inspirational",
+            duration: "medium"
+        );
+
+        // Assert (Kiểm chứng kết quả từ 4 services liên kết)
+        result.Should().NotBeNull();
+        result.Topic.Should().Be("Văn Miếu - Quốc Tử Giám");
+        result.TargetLanguage.Should().Be("en");
+        result.Overview.Should().StartWith("[EN]");
+        result.Segments.Should().HaveCount(3);
+        result.AudioUrl.Should().Be("/media/audio/van-mieu-en.mp3");
+        result.SubtitleUrl.Should().Be("/media/subtitles/van-mieu.srt");
+
+        // Verify Service-to-Service communications occurred
+        translationMock.Verify(t => t.TranslateAsync(It.IsAny<string>(), "vi", "en", It.IsAny<CancellationToken>()), Times.AtLeast(3));
+        ttsMock.Verify(s => s.SynthesizeNarrationAudioAsync(It.IsAny<string>(), "en", 1.0, It.IsAny<CancellationToken>()), Times.Once);
+        storageMock.Verify(m => m.SaveAudioNarrationAsync(It.IsAny<string>(), "en", It.IsAny<Stream>(), It.IsAny<CancellationToken>()), Times.Once);
+        storageMock.Verify(m => m.SaveSubtitleFileAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+    }
+}
+
