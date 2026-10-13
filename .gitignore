@@ -1,0 +1,59 @@
+# ====================================================================
+# VIETAI LIFE — PRODUCTION .GITIGNORE
+# ====================================================================
+
+# 1. Dependency & Package Folders
+node_modules/
+.pnp/
+.pnp.js
+
+# 2. Next.js & Frontend Build Outputs
+.next/
+out/
+build/
+dist/
+
+# 3. .NET & C# Binaries & Intermediate Files
+[Bb]in/
+[Oo]bj/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+TestResults/
+*.nupkg
+
+# 4. Sensitive Environment Variables & Credentials
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+*.pfx
+
+# 5. Logs & Temporary Files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+*.log
+*.tmp
+*.bak
+
+# 6. Operating System & IDE Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+.idea/
+*.swp
+*.swo
+
+# 7. Local Database & Cache
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal

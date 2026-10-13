@@ -1,0 +1,65 @@
+name: VietAI Life CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  backend-ci:
+    name: Backend Build & Test (.NET 10)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore Dependencies
+        run: dotnet restore services/api/VietAILife.sln
+
+      - name: Build Backend Projects
+        run: dotnet build services/api/VietAILife.sln --no-restore -c Release
+
+      - name: Execute Unit & Integration Tests
+        run: dotnet test services/api/tests/UnitTests/VietAILife.UnitTests.csproj --no-build --verbosity normal
+
+  frontend-ci:
+    name: Frontend Lint & Build (Next.js 15)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+          cache-dependency-path: apps/web/package.json
+
+      - name: Install Dependencies
+        run: |
+          cd apps/web
+          npm install
+
+      - name: Type Check & Build Web App
+        run: |
+          cd apps/web
+          npm run build
+
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Scan for Leaked Secrets & API Keys
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

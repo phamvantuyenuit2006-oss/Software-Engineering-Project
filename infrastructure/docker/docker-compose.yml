@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # 1. Backend Clean Architecture API
+  api:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile.api
+    container_name: vietai-api
+    restart: unless-stopped
+    ports:
+      - "5000:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Server=sqlserver,1433;Database=VietAILifeDb;User Id=sa;Password=VietAILife_Strong_Password_2026!;TrustServerCertificate=True
+      - Jwt__Secret=VietAILife_Super_Secret_Key_Production_Ready_2026_Minimum_256_Bits!
+    depends_on:
+      - sqlserver
+      - redis
+
+  # 2. Frontend Next.js Web App
+  web:
+    build:
+      context: ../../
+      dockerfile: infrastructure/docker/Dockerfile.web
+    container_name: vietai-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:5000/api/v1
+    depends_on:
+      - api
+
+  # 3. Microsoft SQL Server Database
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: vietai-sqlserver
+    restart: unless-stopped
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=VietAILife_Strong_Password_2026!
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver_data:/var/opt/mssql
+
+  # 4. Redis Cache & Quota
+  redis:
+    image: redis:7-alpine
+    container_name: vietai-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+
+volumes:
+  sqlserver_data:

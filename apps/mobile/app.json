@@ -1,0 +1,34 @@
+{
+  "expo": {
+    "name": "VietAI Life",
+    "slug": "vietai-life",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#002060"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "vn.vietailife.app",
+      "infoPlist": {
+        "NSSpeechRecognitionUsageDescription": "VietAI Life cần quyền nhận diện giọng nói để hỗ trợ tương tác hội thoại tiếng Việt.",
+        "NSMicrophoneUsageDescription": "VietAI Life cần quyền ghi âm để xử lý lệnh thoại."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#002060"
+      },
+      "package": "vn.vietailife.app",
+      "permissions": [
+        "RECORD_AUDIO",
+        "INTERNET"
+      ]
+    }
+  }
+}

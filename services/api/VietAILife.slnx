@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Domain/VietAILife.Domain.csproj" />
+    <Project Path="src/Application/VietAILife.Application.csproj" />
+    <Project Path="src/Infrastructure/VietAILife.Infrastructure.csproj" />
+    <Project Path="src/API/VietAILife.API.csproj" />
+  </Folder>
+</Solution>
