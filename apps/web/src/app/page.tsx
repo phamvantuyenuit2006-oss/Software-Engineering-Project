@@ -1657,14 +1657,14 @@ export default function VietAILifePage() {
       )}
 
       {/* ==================================================================== */}
-      {/* FOOTER: VĂN HÓA & TRÁCH NHIỆM                                         */}
+      {/* FOOTER: VĂN HÓA & BẢN QUYỀN                                           */}
       {/* ==================================================================== */}
       <footer className="mt-16 border-t border-slate-200 bg-white py-8 text-center text-xs text-slate-500 space-y-2">
-        <p className="font-semibold text-slate-700">
-          VietAI Life &copy; 2026 &bull; Nền Tảng Trợ Lý AI Đời Sống Dành Cho 100 Triệu Người Việt
+        <p className="font-bold text-slate-800">
+          VietAI Life &copy; 2026 &bull; Bản quyền thuộc về <a href="https://github.com/phamvantuyenuit2006-oss" target="_blank" rel="noopener noreferrer" className="text-emerald-700 hover:underline font-extrabold">Tuyên Phạm (@phamvantuyenuit2006-oss)</a>
         </p>
-        <p className="text-[11px] text-slate-400 max-w-xl mx-auto">
-          Tích hợp tiêu chuẩn kỹ thuật & giáo trình AI VIỆT NAM (AIO Academy). Tuân thủ nghiêm ngặt Nghị định 13/2023/NĐ-CP về bảo vệ dữ liệu cá nhân.
+        <p className="text-[11px] text-slate-500 max-w-xl mx-auto">
+          Nền tảng Trợ lý AI Đời sống Người Việt &bull; Tích hợp giáo trình AI VIỆT NAM (AIO Academy) &amp; DeepSeek V3 AI. Tuân thủ Nghị định 13/2023/NĐ-CP.
         </p>
       </footer>
     </div>

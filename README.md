@@ -1,8 +1,10 @@
 # VIETAI LIFE — NỀN TẢNG AI AGENT ĐỜI SỐNG CHO 100 TRIỆU NGƯỜI VIỆT
 > **Tagline:** *"AI thấu hiểu người Việt — Đồng hành cùng nhịp sống mỗi ngày"*  
+> **Tác giả sáng lập & Sở hữu bản quyền:** **[Tuyên Phạm](https://github.com/phamvantuyenuit2006-oss)** ([@phamvantuyenuit2006-oss](https://github.com/phamvantuyenuit2006-oss))  
 > **Trợ lý:** Bé Mai (VietAI Companion) &bull; **Engine:** DeepSeek-V3 Live AI & Chuẩn đào tạo AI VIET NAM (AIO 2026)
 
 [![Architecture](https://img.shields.io/badge/Architecture-Clean%20Architecture-blue.svg)](docs/architecture/ARCHITECTURE.md)
+[![Author](https://img.shields.io/badge/Author-Tuy%C3%AAn%20Ph%E1%BA%A1m-blue?logo=github)](https://github.com/phamvantuyenuit2006-oss)
 [![Frontend](https://img.shields.io/badge/Frontend-Next.js%2015%20%2F%20React%2019-black.svg)](apps/web/)
 [![Backend](https://img.shields.io/badge/Backend-.NET%2010%20ASP.NET%20Core-purple.svg)](services/api/)
 [![AI Engine](https://img.shields.io/badge/AI%20Engine-DeepSeek--V3%20%2F%20Gemini-emerald.svg)](apps/web/src/app/api/chat/route.ts)
@@ -112,6 +114,20 @@ GEMINI_API_KEY=your_gemini_api_key_here
 
 ---
 
+## 👤 Tác Giả & Sở Hữu Bản Quyền (Author & Copyright)
+
+* **Tác giả & Chủ sở hữu:** **Tuyên Phạm** ([@phamvantuyenuit2006-oss](https://github.com/phamvantuyenuit2006-oss))
+* **Email liên hệ:** [phamvantuyenuit2006@gmail.com](mailto:phamvantuyenuit2006@gmail.com)
+* **Kho lưu trữ chính thức:** [https://github.com/phamvantuyenuit2006-oss/VietAI-Life](https://github.com/phamvantuyenuit2006-oss/VietAI-Life)
+
+Toàn bộ ý tưởng thiết kế, mã nguồn và kiến trúc nền tảng **VietAI Life** thuộc quyền sở hữu của **Tuyên Phạm**. Dự án được phân phối dưới giấy phép mã nguồn mở [MIT License](LICENSE).
+
+---
+
 ## 📄 Giấy phép bản quyền (License)
 
-Dự án được phân phối dưới giấy phép mã nguồn mở **MIT License**.
+```
+Copyright (c) 2026 Tuyên Phạm (Pham Van Tuyen - phamvantuyenuit2006-oss)
+All rights reserved.
+```
+Phát hành theo giấy phép [MIT License](LICENSE).
