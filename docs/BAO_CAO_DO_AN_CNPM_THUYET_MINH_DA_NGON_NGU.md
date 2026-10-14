@@ -8,7 +8,7 @@
 - **Giảng viên hướng dẫn**: ThS. Nguyễn Quốc Huy
 - **Sinh viên thực hiện / Tác giả**: Tuyên Phạm (`@phamvantuyenuit2006-oss`)
 - **Email tác giả**: `phamvantuyenuit2006@gmail.com`
-- **Mã nguồn GitHub**: [https://github.com/phamvantuyenuit2006-oss/VietAI-Life](https://github.com/phamvantuyenuit2006-oss/VietAI-Life)
+- **Mã nguồn GitHub**: [https://github.com/phamvantuyenuit2006-oss/Software-Engineering-Project](https://github.com/phamvantuyenuit2006-oss/Software-Engineering-Project)
 - **Bản quyền**: &copy; 2026 Tuyên Phạm. Toàn quyền tác giả và sở hữu trí tuệ đồ án.
 
 ---
@@ -227,6 +227,6 @@ Lệnh build thực thi: `npm run build` tại `apps/web`.
 3. **BE DEV Services giao tiếp nhau**: Kiến trúc Microservices điều phối kịch bản, dịch thuật, tổng hợp âm thanh và lưu trữ file, được chứng thực qua Unit Tests và CI/CD.
 
 Toàn bộ mã nguồn, cấu hình CI/CD và tài liệu được lưu trữ và quản lý minh bạch tại GitHub:
-👉 **[https://github.com/phamvantuyenuit2006-oss/VietAI-Life](https://github.com/phamvantuyenuit2006-oss/VietAI-Life)**
+👉 **[https://github.com/phamvantuyenuit2006-oss/Software-Engineering-Project](https://github.com/phamvantuyenuit2006-oss/Software-Engineering-Project)**
 
 *Bản quyền đồ án thuộc về **Tuyên Phạm** (`@phamvantuyenuit2006-oss`).*
